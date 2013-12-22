@@ -12,15 +12,7 @@ JSON Struct Checker (for NodeJS)
     npm install jsonchk
 
 # 3. 示例
-    var schema = { name : 'string' };
-    var data1 = { name : 'MK' };
-    var data2 = { };
-    var data3 = { name : 1 };
-    var data4 = { name : null };
-    console.log( JSONStructChecker( schema, data1 ) );
-    console.log( JSONStructChecker( schema, data2 ) );
-    console.log( JSONStructChecker( schema, data3 ) );
-    console.log( JSONStructChecker( schema, data4 ) );
+    代码请参看：[https://github.com/imnull/jsonchk/blob/master/test.js](test.js)
 
 ## 3.1 类型判断
 ### 3.1.1 类型字符串比对
@@ -104,3 +96,9 @@ JSON Struct Checker (for NodeJS)
       }
     }
 
+# 5. 关于log参数
+该参数为外部引用变量，类型为数组。如果代入该引用，那么当检查出现错误时，会向此参数推入一条记录。一条记录为一个数组，按顺序为：
+    namespace, error-type, error-description, current-checker, current-value
+
+# 6. 关于namespace参数
+表述出错时的层级关系
