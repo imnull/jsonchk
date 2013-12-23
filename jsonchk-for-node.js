@@ -8,7 +8,7 @@ function LOG(log, msg){
 }
 
 function JSONStructChecker(schema, target, log, namespace){
-	if(!jst.isValidObject(target)) {
+	if(!jst.isObject(target)) {
 		LOG(log, [namespace || '', 'fatal', 'not a object', schema, target]);
 		return false;
 	}
@@ -25,10 +25,10 @@ function JSONStructChecker(schema, target, log, namespace){
 		if(jst.isString(exp)){
 			_log[1] = 'string type-check';
 			_log[2] = 'not match';
-			if(exp == '*' || tstr(target[p]) == exp || ostr(target[p]) == exp){
+			if(exp == '*' || jst.tstr(target[p]) == exp || jst.ostr(target[p]) == exp){
 				continue;
 			} else if(exp == '@') {
-				if(tstr(target[p]) == 'undefined'){
+				if(jst.tstr(target[p]) == 'undefined'){
 					continue;
 				}
 				if(JSONStructChecker(schema, target[p], log, ns)){
@@ -46,7 +46,7 @@ function JSONStructChecker(schema, target, log, namespace){
 		} else if(jst.isRegExp(exp)){
 			_log[1] = 'regexp type-check';
 			_log[2] = 'not match';
-			if(exp.test(tstr(target[p])) || exp.test(ostr(target[p]))){
+			if(exp.test(jst.tstr(target[p])) || exp.test(jst.ostr(target[p]))){
 				continue;
 			} else {
 				//_log[1] = 'regexp check';
@@ -89,7 +89,7 @@ function JSONStructChecker(schema, target, log, namespace){
 	return true;
 }
 
-exports.jsonchk = JSONStructChecker;
+module.exports = JSONStructChecker;
 
 })()	
 

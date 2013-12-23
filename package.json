@@ -1,0 +1,26 @@
+{
+  "name": "jsonchk",
+  "version": "1.0.5",
+  "description": "JSON struct checker",
+  "main": "jsonchk-for-node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+      "js-type": ">=0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imnull/jsonchk.git"
+  },
+  "keywords": [
+    "json",
+    "schema"
+  ],
+  "author": "Ma Ke (MrNULL)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imnull/jsonchk/issues"
+  },
+  "homepage": "https://github.com/imnull/jsonchk"
+}

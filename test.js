@@ -1,4 +1,5 @@
 var jchk = require('jsonchk');
+console.log(jchk)
 
 var schema = {
 	name : 'string',
@@ -29,7 +30,7 @@ function explain(logs){
 			// + '\n--------------------------------------'
 			+ '\ndata-state \t: ' + log[2]
 			// + '\nschema \t\t: ' + log[3]
-			+ '\ndata \t\t\t: ' + log[4]
+			+ '\ndata \t\t: ' + log[4]
 			// + '\n--------------------------------------'
 			+ '\n--------------------------------------\n'
 			;
