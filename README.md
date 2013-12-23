@@ -10,6 +10,7 @@ JSON Struct Checker (for NodeJS)
 # 2. 安装
 
     npm install jsonchk
+npm上的项目地址：[https://npmjs.org/package/jsonchk](https://npmjs.org/package/jsonchk)
 
 # 3. 示例
 示例代码请参看：[https://github.com/imnull/jsonchk/blob/master/test.js](test.js)
