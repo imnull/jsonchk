@@ -1,4 +1,4 @@
-var jchk = require('jsonchk').jsonchk;
+var jchk = require('jsonchk');
 
 var schema = {
 	name : 'string',

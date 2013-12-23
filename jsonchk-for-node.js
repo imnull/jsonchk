@@ -1,23 +1,14 @@
 (function(){
 
-function ostr(val){ return Object.prototype.toString.call(val); }
-function tstr(val){ return typeof(val); }
-
-function isFunction(val){ return tstr(val) == 'function'; }
-function isString(val){ return tstr(val) == 'string'; }
-function isArray(val){ return ostr(val) == '[object Array]'; }
-function isObject(val){ return ostr(val) == '[object Object]'; }
-function isRegExp(val){ return ostr(val) == '[object RegExp]' } 
-function isEmpty(val){ return tstr(val) == 'undefined' || val === null; }
-function isValidObject(val){ return !isEmpty(val) && isObject(val); }
+var jst = require('js-type');
 
 function LOG(log, msg){
-	if(!isArray(log)) return;
+	if(!jst.isArray(log)) return;
 	log.push(msg);
 }
 
 function JSONStructChecker(schema, target, log, namespace){
-	if(!isValidObject(target)) {
+	if(!jst.isValidObject(target)) {
 		LOG(log, [namespace || '', 'fatal', 'not a object', schema, target]);
 		return false;
 	}
@@ -31,7 +22,7 @@ function JSONStructChecker(schema, target, log, namespace){
 		var _log = [ns, 'unknown schema', 'not implement', exp, target[p]];
 
 		//type check
-		if(isString(exp)){
+		if(jst.isString(exp)){
 			_log[1] = 'string type-check';
 			_log[2] = 'not match';
 			if(exp == '*' || tstr(target[p]) == exp || ostr(target[p]) == exp){
@@ -52,7 +43,7 @@ function JSONStructChecker(schema, target, log, namespace){
 				LOG(log, _log);
 				return false;
 			}
-		} else if(isRegExp(exp)){
+		} else if(jst.isRegExp(exp)){
 			_log[1] = 'regexp type-check';
 			_log[2] = 'not match';
 			if(exp.test(tstr(target[p])) || exp.test(ostr(target[p]))){
@@ -64,7 +55,7 @@ function JSONStructChecker(schema, target, log, namespace){
 			}
 		}
 		//function-return check
-		else if(isFunction(exp)){
+		else if(jst.isFunction(exp)){
 			_log[1] = 'function value-check';
 			_log[2] = 'not pass';
 			if(exp(target[p], _log, ns)){
@@ -75,7 +66,7 @@ function JSONStructChecker(schema, target, log, namespace){
 			}
 		}
 		//nest check
-		else if(isValidObject(exp)) {
+		else if(jst.isObject(exp)) {
 			_log[1] = 'nest object-check';
 			if(!(p in target)){
 				_log[2] = 'not exists'
