@@ -12,7 +12,7 @@ JSON Struct Checker (for NodeJS)
     npm install jsonchk
 
 # 3. 示例
-    代码请参看：[https://github.com/imnull/jsonchk/blob/master/test.js](test.js)
+示例代码请参看：[https://github.com/imnull/jsonchk/blob/master/test.js](test.js)
 
 ## 3.1 类型判断
 ### 3.1.1 类型字符串比对
